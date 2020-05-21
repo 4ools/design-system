@@ -1,2 +1,3 @@
 export * from './colors';
-export * from './type-scale';
+export * from './text-scale';
+export * from './typography';
