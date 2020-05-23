@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { useNavigation } from './useNavigation';
 import type { PageNavigationItem } from '../../interfaces/navigation';
 

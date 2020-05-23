@@ -21,10 +21,6 @@ const HeadingFive = styled.h5`
   font-size: ${textScale.h5};
 `;
 
-const HeadingSix = styled.h6`
-  font-size: ${textScale.h6};
-`;
-
 const BodyCopy = styled.div`
   font-size: ${textScale.copy};
 `;
@@ -35,6 +31,5 @@ export {
   HeadingThree,
   HeadingFour,
   HeadingFive,
-  HeadingSix,
   BodyCopy,
 };

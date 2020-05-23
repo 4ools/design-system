@@ -55,7 +55,7 @@ const formatNavigationData = (
         });
       } else {
         // the parent page exists
-        nav.map(page => {
+        nav.forEach(page => {
           // find the parent page entry and add this sub page as one of the children
           if (page.name === firstLevelName) {
             page.subPages.push(thisPage);
