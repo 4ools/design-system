@@ -1,4 +1,5 @@
 module.exports = {
+  preset: 'ts-jest/presets/js-with-babel',
   transform: {
     '^.+\\.tsx?$': 'ts-jest',
     '^.+\\.jsx?$': `<rootDir>/jest-preprocess.js`,
@@ -12,6 +13,9 @@ module.exports = {
   transformIgnorePatterns: [`node_modules/(?!(gatsby)/)`],
   globals: {
     __PATH_PREFIX__: ``,
+    'ts-jest': {
+      babelConfig: './babel.config.js',
+    },
   },
   testURL: `http://localhost`,
   setupFiles: [`<rootDir>/loadershim.js`],
