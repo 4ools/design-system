@@ -31,7 +31,6 @@
     "babel-preset-gatsby": "^0.4.7",
     "eslint": "^7.1.0",
     "eslint-config-prettier": "^6.11.0",
-    "eslint-config-react-app": "^5.2.1",
     "eslint-plugin-prettier": "^3.1.3",
     "eslint-plugin-react": "^7.20.0",
     "identity-obj-proxy": "^3.0.0",
@@ -55,8 +54,5 @@
     "test": "jest --watch",
     "type-check": "tsc --noEmit --skipLibCheck",
     "lint": "eslint **/*.tsx"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   }
 }
