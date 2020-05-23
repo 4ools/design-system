@@ -14,7 +14,7 @@ module.exports = {
   globals: {
     __PATH_PREFIX__: ``,
     'ts-jest': {
-      babelConfig: './babel.config.js',
+      babelConfig: './test-runner-babel.config.js',
     },
   },
   testURL: `http://localhost`,

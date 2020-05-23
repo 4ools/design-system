@@ -6,7 +6,6 @@ import GlobalStyles from '../components/GlobalStyles';
 
 const IndexPage = () => (
   <Layout>
-    <SEO title="Home" />
     <HeadingOne>The quick brown fox jumped over the lazy dog</HeadingOne>
     <HeadingThree>This is a smaller heading</HeadingThree>
     <p>
