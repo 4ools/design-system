@@ -23,17 +23,101 @@ test('we include items that do not have a file extension', () => {
       edges: [
         {
           node: {
-            path: '/something',
+            path: '/something/',
           },
         },
       ],
     },
   };
   const pages = formatNavigationData(response);
-  expect(pages).toBe([
+  expect(pages).toStrictEqual([
     {
-      path: '/something',
+      path: 'something',
       name: 'something',
+    },
+  ]);
+});
+
+test('we should get a sub page if we have one', () => {
+  const response: AllSitePagesQueryResult = {
+    allSitePage: {
+      edges: [
+        {
+          node: {
+            path: '/something/new/',
+          },
+        },
+      ],
+    },
+  };
+  const pages = formatNavigationData(response);
+  expect(pages).toStrictEqual([
+    {
+      path: '',
+      name: 'something',
+      subPages: [
+        {
+          path: 'something/new',
+          name: 'new',
+        },
+      ],
+    },
+  ]);
+});
+
+test('if we have two pages under the same page they should be organized correctly', () => {
+  const response: AllSitePagesQueryResult = {
+    allSitePage: {
+      edges: [
+        {
+          node: {
+            path: '/something/new/',
+          },
+        },
+        {
+          node: {
+            path: '/something/again/',
+          },
+        },
+      ],
+    },
+  };
+  const pages = formatNavigationData(response);
+  expect(pages).toStrictEqual([
+    {
+      path: '',
+      name: 'something',
+      subPages: [
+        {
+          path: 'something/new',
+          name: 'new',
+        },
+        {
+          path: 'something/again',
+          name: 'again',
+        },
+      ],
+    },
+  ]);
+});
+
+test('we should default the page to home if there is no path other than /', () => {
+  const response: AllSitePagesQueryResult = {
+    allSitePage: {
+      edges: [
+        {
+          node: {
+            path: '/',
+          },
+        },
+      ],
+    },
+  };
+  const pages = formatNavigationData(response);
+  expect(pages).toStrictEqual([
+    {
+      path: '/',
+      name: 'Home',
     },
   ]);
 });

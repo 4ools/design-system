@@ -1,12 +1,10 @@
 interface AllSitePagesQueryResult {
   allSitePage: {
-    edges: [
-      {
-        node: {
-          path: string;
-        };
-      }
-    ];
+    edges: Array<{
+      node: {
+        path: string;
+      };
+    }>;
   };
 }
 
@@ -14,8 +12,8 @@ interface AllSitePagesQueryResult {
 interface PageNavigationItem {
   path: string;
   name: string;
-  subPages?: PageNavigationItem[];
+  subPages?: Array<PageNavigationItem>;
 }
-type PageNavigation = PageNavigationItem[];
+type PageNavigation = Array<PageNavigationItem>;
 
 export { PageNavigation, PageNavigationItem, AllSitePagesQueryResult };
