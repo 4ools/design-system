@@ -1,24 +1,9 @@
 import { useStaticQuery, graphql } from 'gatsby';
-
-interface AllSitePagesQueryResult {
-  allSitePage: {
-    edges: [
-      {
-        node: {
-          path: string;
-        };
-      }
-    ];
-  };
-}
-
-// ony two deep for now we do not need to worry then
-interface PageNavigationItem {
-  path: string;
-  name: string;
-  subPages?: PageNavigationItem[];
-}
-type PageNavigation = PageNavigationItem[];
+import type {
+  AllSitePagesQueryResult,
+  PageNavigation,
+  PageNavigationItem,
+} from '../../interfaces/navigation';
 
 const formatNavigationData = (
   queryResult: AllSitePagesQueryResult
@@ -98,7 +83,8 @@ const useNavigation = (): PageNavigation => {
       }
     }
   `);
+
   return formatNavigationData(data);
 };
 
-export { useNavigation, formatNavigationData, PageNavigationItem };
+export { useNavigation, formatNavigationData };

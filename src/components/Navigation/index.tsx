@@ -1,11 +1,11 @@
 import React from 'react';
 import { useNavigation } from './useNavigation';
-import type { PageNavigationItem } from './useNavigation';
+import type { PageNavigationItem } from '../../interfaces/navigation';
 
-interface NavItemProps {
+type NavItemProps = {
   page: PageNavigationItem;
   key: number;
-}
+};
 
 const NavItem: React.SFC<NavItemProps> = ({ page, key }) => (
   <li key={key}>{page.name}</li>
