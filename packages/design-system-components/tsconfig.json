@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "module": "AMD",
+    "outFile": "index.d.ts",
+    "declaration": true,
+    "allowJs": true,
+    "checkJs": true, // optional
+    "emitDeclarationOnly": true,
+    "skipLibCheck": true,
+    "jsx": "react"
+  },
+  "include": ["**/*"]
+}

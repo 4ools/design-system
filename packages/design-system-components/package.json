@@ -2,16 +2,15 @@
   "name": "@4ools/design-system-components",
   "version": "1.0.0",
   "private": true,
-  "main": "index.js",
-  "types": "declarations/index.d.ts",
+  "main": "index.ts",
+  "types": "index.d.ts",
   "license": "MIT",
   "author": "Gareth Fuller @sirJiggles",
   "scripts": {
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "type-check": "tsc --noEmit --skipLibCheck",
     "lint": "eslint **/*.{tsx,ts}",
     "test-all": "yarn test && yarn type-check && yarn lint",
-    "typings": "tsc index.ts --declaration --skipLibCheck --jsx react --declarationDir ./declarations"
+    "typings": "tsc"
   },
   "dependencies": {
     "polished": "^3.6.3",
