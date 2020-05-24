@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "module": "CommonJS",
-    "outFile": "index.d.ts",
+    "declarationDir": "./declarations",
     "declaration": true,
     "allowJs": true,
     "checkJs": true, // optional

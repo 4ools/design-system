@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "main": "index.ts",
-  "types": "index.d.ts",
+  "types": "declarations/index.d.ts",
   "license": "MIT",
   "author": "Gareth Fuller @sirJiggles",
   "scripts": {

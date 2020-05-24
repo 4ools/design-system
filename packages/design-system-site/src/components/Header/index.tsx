@@ -1,7 +1,7 @@
 import { Link } from 'gatsby';
 import * as React from 'react';
 import styled from 'styled-components';
-import { Typography } from '@4ools/design-system-components';
+import { Typography, Grid } from '@4ools/design-system-components';
 
 interface HeaderProps {
   siteTitle: string;
@@ -21,12 +21,14 @@ const HeaderText = styled(Typography.HeadingThree)`
 
 const Header: React.SFC<HeaderProps> = ({ siteTitle, setTheme, theme }) => (
   <StyledHeader>
-    <HeaderText>
-      <Link to="/">{siteTitle}</Link>
+    <Grid.Container>
+      <HeaderText>
+        <Link to="/">{siteTitle}</Link>
+      </HeaderText>
       <button onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
         Toggle Theme
       </button>
-    </HeaderText>
+    </Grid.Container>
   </StyledHeader>
 );
 
