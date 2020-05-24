@@ -3,16 +3,15 @@
   "version": "1.0.0",
   "private": true,
   "main": "index.js",
-  "types": "index.d.ts",
+  "types": "declarations/index.d.ts",
   "license": "MIT",
   "author": "Gareth Fuller @sirJiggles",
   "scripts": {
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "test": "jest",
     "type-check": "tsc --noEmit --skipLibCheck",
-    "lint": "eslint **/*.tsx",
+    "lint": "eslint **/*.{tsx,ts}",
     "test-all": "yarn test && yarn type-check && yarn lint",
-    "typings": "tsc index.ts --declaration --skipLibCheck --jsx react"
+    "typings": "tsc index.ts --declaration --skipLibCheck --jsx react --declarationDir ./declarations"
   },
   "dependencies": {
     "polished": "^3.6.3",

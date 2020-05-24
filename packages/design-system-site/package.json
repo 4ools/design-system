@@ -17,7 +17,7 @@
     "clean": "gatsby clean",
     "test": "jest",
     "type-check": "tsc --noEmit --skipLibCheck",
-    "lint": "eslint **/*.tsx",
+    "lint": "eslint **/*.{tsx,ts}",
     "test-all": "yarn test && yarn type-check && yarn lint"
   },
   "dependencies": {
