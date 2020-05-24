@@ -1,15 +1,16 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
 import * as React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 
 import Header from '../header';
 import Navigation from '../Navigation';
+import styled from 'styled-components';
+
+const Wrapper = styled.div`
+  margin: 0 auto;
+  max-width: 1000px;
+  display: flex;
+  flex-direction: row;
+`;
 
 const Layout: React.SFC = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -25,18 +26,12 @@ const Layout: React.SFC = ({ children }) => {
   return (
     <>
       <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
-        <aside>
+      <Wrapper>
+        <aside style={{ width: '30%' }}>
           <Navigation />
         </aside>
-        <main>{children}</main>
-      </div>
+        <main style={{ width: '70%' }}>{children}</main>
+      </Wrapper>
     </>
   );
 };

@@ -12,7 +12,7 @@ const NavItem: React.SFC<NavItemProps> = ({ page, key }) => (
 );
 
 // just the links for the site (all the pages with the components on)
-const Navigation = () => {
+const Navigation: React.SFC = () => {
   const pages = useNavigation();
   return (
     <>

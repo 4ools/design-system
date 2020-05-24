@@ -9,9 +9,8 @@ const formatNavigationData = (
   queryResult: AllSitePagesQueryResult
 ): PageNavigation => {
   const nav: PageNavigation = [];
-  const items = queryResult?.allSitePage?.edges;
 
-  const paths = items
+  queryResult?.allSitePage?.edges
     // don't include anything with a file extension
     .filter(item => !item?.node?.path.match(/\.[^/.]+$/))
     // get the paths that we care about
