@@ -21,7 +21,7 @@ const HeaderText = styled(Typography.HeadingThree)`
 
 const Header: React.SFC<HeaderProps> = ({ siteTitle, setTheme, theme }) => (
   <StyledHeader>
-    <Grid.Container>
+    <Grid.Container cols="1fr 100px" rows="auto">
       <HeaderText>
         <Link to="/">{siteTitle}</Link>
       </HeaderText>

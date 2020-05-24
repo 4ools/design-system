@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { StyledComponent } from 'styled-components';
 import { CustomThemeProps } from '../../themes/interfaces';
 
 interface ContainerProps extends CustomThemeProps {
@@ -11,14 +11,20 @@ interface ContainerProps extends CustomThemeProps {
   align?: string;
 }
 
-const Container = styled.div`
+const Container: StyledComponent<
+  'div',
+  any,
+  ContainerProps,
+  never
+> = styled.div`
+  ${(props: ContainerProps) =>
+    props.area && `grid-template-area: ${props.area};`}
   display: grid;
   grid-template-columns: ${(props: ContainerProps) =>
     props.cols ? props.cols : props.theme.grid.cols};
   grid-template-rows: ${(props: ContainerProps) =>
     props.rows ? props.rows : props.theme.grid.rows};
-  ${(props: ContainerProps) =>
-    props.area && `grid-template-area: ${props.area};`}
+
   column-gap: ${(props: ContainerProps) =>
     props.colGap ? props.colGap : props.theme.grid.colGap};
   row-gap: ${(props: ContainerProps) =>
