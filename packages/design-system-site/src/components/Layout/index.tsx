@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
-
 import Header from '../Header';
 import Navigation from '../Navigation';
 import styled, { ThemeProvider } from 'styled-components';
@@ -40,8 +39,10 @@ const Layout: React.SFC = ({ children }) => {
     }
   `);
 
+  const [currentTheme, setCurrentTheme] = React.useState('light');
+
   return (
-    <ThemeProvider theme={themes.dark}>
+    <ThemeProvider theme={themes[currentTheme]}>
       <SiteWrapper>
         <Grid.Container
           cols="1fr"
@@ -49,7 +50,11 @@ const Layout: React.SFC = ({ children }) => {
           rowGap="0"
           style={{ height: '100%' }}
         >
-          <Header siteTitle={data.site.siteMetadata.title} />
+          <Header
+            setTheme={setCurrentTheme}
+            theme={currentTheme}
+            siteTitle={data.site.siteMetadata.title}
+          />
           <Wrapper>
             <Grid.Container cols="250px 1fr" style={{ height: '100%' }}>
               <Aside>

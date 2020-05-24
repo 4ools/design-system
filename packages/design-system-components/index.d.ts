@@ -43,12 +43,38 @@ declare module "themes/interfaces" {
     type CustomThemeProps = ThemeProps<Theme>;
     export { GridConfig, Theme, ThemeColors, TextScale, Themes, CustomThemeProps };
 }
-declare module "index" {
-    import themes from './themes';
-    import { CustomThemeProps } from "themes/interfaces";
-    import Grid from './components/Grid';
-    import Typography from './components/Typography';
-    export { Typography, Grid, themes, CustomThemeProps };
+declare module "themes/grid" {
+    import { GridConfig } from "themes/interfaces";
+    const grid: GridConfig;
+    export default grid;
+}
+declare module "themes/colors" {
+    const colors: {
+        primary: string;
+        secondary: string;
+        tertiary: string;
+        warning: string;
+        error: string;
+        info: string;
+        blue: string;
+        orange: string;
+        red: string;
+    };
+    export default colors;
+}
+declare module "themes/text-scale" {
+    import { TextScale } from "themes/interfaces";
+    const textScale: TextScale;
+    export default textScale;
+}
+declare module "themes/typography" {
+    const primaryFont = "\"Overpass Mono\", monospace;";
+    export default primaryFont;
+}
+declare module "themes/index" {
+    import { Themes } from "themes/interfaces";
+    const themes: Themes;
+    export default themes;
 }
 declare module "components/Grid/index" {
     interface ItemProps {
@@ -78,36 +104,10 @@ declare module "components/Typography/index" {
     };
     export default Typography;
 }
-declare module "themes/colors" {
-    const colors: {
-        primary: string;
-        secondary: string;
-        tertiary: string;
-        warning: string;
-        error: string;
-        info: string;
-        blue: string;
-        orange: string;
-        red: string;
-    };
-    export default colors;
-}
-declare module "themes/grid" {
-    import { GridConfig } from "themes/interfaces";
-    const grid: GridConfig;
-    export default grid;
-}
-declare module "themes/text-scale" {
-    import { TextScale } from "themes/interfaces";
-    const textScale: TextScale;
-    export default textScale;
-}
-declare module "themes/typography" {
-    const primaryFont = "\"Overpass Mono\", monospace;";
-    export default primaryFont;
-}
-declare module "themes/index" {
-    import { Themes } from "themes/interfaces";
-    const themes: Themes;
-    export default themes;
+declare module "index" {
+    import themes from "themes/index";
+    import { CustomThemeProps } from "themes/interfaces";
+    import Grid from "components/Grid/index";
+    import Typography from "components/Typography/index";
+    export { Typography, Grid, themes, CustomThemeProps };
 }

@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "module": "AMD",
+    "module": "CommonJS",
     "outFile": "index.d.ts",
     "declaration": true,
     "allowJs": true,
