@@ -6,6 +6,7 @@ import { Typography } from '@4ools/design-system-components';
 const StyledHeader = styled.header`
   background-color: ${props => props.theme.colors.primary};
   padding: 20px;
+  width: 100%;
 `;
 
 const HeaderText = styled(Typography.HeadingThree)`

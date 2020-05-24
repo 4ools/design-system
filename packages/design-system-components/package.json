@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "main": "index.js",
+  "types": "index.d.ts",
   "license": "MIT",
   "author": "Gareth Fuller @sirJiggles",
   "scripts": {
@@ -10,7 +11,8 @@
     "test": "jest",
     "type-check": "tsc --noEmit --skipLibCheck",
     "lint": "eslint **/*.tsx",
-    "test-all": "yarn test && yarn type-check && yarn lint"
+    "test-all": "yarn test && yarn type-check && yarn lint",
+    "typings": "tsc index.ts --declaration --skipLibCheck --jsx react"
   },
   "dependencies": {
     "polished": "^3.6.3",

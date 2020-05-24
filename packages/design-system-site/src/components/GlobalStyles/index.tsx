@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 import { normalize } from 'polished';
-// import { CustomThemeProps } from '@4ools/design-system-components';
+import { CustomThemeProps } from '@4ools/design-system-components';
 
 const GlobalStyle = createGlobalStyle`
   ${normalize()}
@@ -13,7 +13,7 @@ const GlobalStyle = createGlobalStyle`
   }
   body {
     margin: 0;
-    font-family: ${props => props.theme.primaryFont};
+    font-family: ${(props: CustomThemeProps) => props.theme.primaryFont};
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -24,7 +24,12 @@ const GlobalStyle = createGlobalStyle`
   }
 
   div[role="group"][tabindex] {
-      height: 100%;
+    height: 100%;
+  }
+
+  a {
+    text-decoration: none;
+    color: ${(props: CustomThemeProps) => props.theme.textColor};
   }
 `;
 
