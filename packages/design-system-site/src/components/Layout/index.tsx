@@ -16,11 +16,6 @@ const SiteWrapper = styled.div`
   color: ${(props: CustomThemeProps) => props.theme.textColor};
 `;
 
-const Wrapper = styled.div`
-  margin: 0 auto;
-  height: 100%;
-`;
-
 const Aside = styled.aside`
   border-right: 1px solid
     ${(props: CustomThemeProps) => props.theme.borderColor};
@@ -57,14 +52,13 @@ const Layout: React.SFC = ({ children }) => {
             theme={currentTheme}
             siteTitle={data.site.siteMetadata.title}
           />
-          <Wrapper>
-            <Grid.Container cols="250px 1fr" style={{ height: '100%' }}>
-              <Aside>
-                <Navigation />
-              </Aside>
-              <main>{children}</main>
-            </Grid.Container>
-          </Wrapper>
+
+          <Grid.Container cols="250px auto" style={{ height: '100%' }}>
+            <Aside>
+              <Navigation />
+            </Aside>
+            <main>{children}</main>
+          </Grid.Container>
         </Grid.Container>
       </SiteWrapper>
     </ThemeProvider>

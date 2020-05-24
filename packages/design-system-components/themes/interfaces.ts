@@ -19,10 +19,7 @@ interface Theme {
   primaryFont: string;
 }
 
-interface Themes {
-  light: Theme;
-  dark: Theme;
-}
+type Themes = { [key: string]: Theme };
 
 interface TextScale {
   h1: string;

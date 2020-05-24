@@ -9,9 +9,8 @@ const IndexPage = () => (
       The quick brown fox jumped over the lazy dog
     </Typography.HeadingOne>
     <Typography.HeadingThree>This is a smaller heading</Typography.HeadingThree>
-    <p>
-      <Typography.BodyCopy>This is some copy text</Typography.BodyCopy>
-    </p>
+
+    <Typography.BodyCopy>This is some copy text</Typography.BodyCopy>
   </Layout>
 );
 
