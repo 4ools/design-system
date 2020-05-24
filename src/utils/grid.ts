@@ -1,7 +1,7 @@
 const grid = {
   colGap: '20px',
   rowGap: '20px',
-  rows: 1,
+  rows: 'auto',
   cols: 'repeat(12 1fr)',
   justify: 'start',
   align: 'start',

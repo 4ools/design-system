@@ -4,12 +4,11 @@ import { useStaticQuery, graphql } from 'gatsby';
 import Header from '../header';
 import Navigation from '../Navigation';
 import styled from 'styled-components';
+import { Container } from '../Grid';
 
 const Wrapper = styled.div`
   margin: 0 auto;
   max-width: 1000px;
-  display: flex;
-  flex-direction: row;
 `;
 
 const Layout: React.SFC = ({ children }) => {
@@ -27,10 +26,12 @@ const Layout: React.SFC = ({ children }) => {
     <>
       <Header siteTitle={data.site.siteMetadata.title} />
       <Wrapper>
-        <aside style={{ width: '30%' }}>
-          <Navigation />
-        </aside>
-        <main style={{ width: '70%' }}>{children}</main>
+        <Container cols="200px 1fr">
+          <aside>
+            <Navigation />
+          </aside>
+          <main>{children}</main>
+        </Container>
       </Wrapper>
     </>
   );
