@@ -2,6 +2,7 @@ import * as React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import Header from '../Header';
 import Navigation from '../Navigation';
+import GlobalStyles from '../GlobalStyles';
 import styled, { ThemeProvider } from 'styled-components';
 import {
   Grid,
@@ -43,6 +44,7 @@ const Layout: React.SFC = ({ children }) => {
 
   return (
     <ThemeProvider theme={themes[currentTheme]}>
+      <GlobalStyles />
       <SiteWrapper>
         <Grid.Container
           cols="1fr"

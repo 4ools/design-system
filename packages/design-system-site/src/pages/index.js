@@ -2,7 +2,6 @@ import * as React from 'react';
 import Layout from '../components/Layout';
 import SEO from '../components/seo';
 import { Typography } from '@4ools/design-system-components';
-import GlobalStyles from '../components/GlobalStyles';
 
 const IndexPage = () => (
   <Layout>
@@ -13,7 +12,6 @@ const IndexPage = () => (
     <p>
       <Typography.BodyCopy>This is some copy text</Typography.BodyCopy>
     </p>
-    <GlobalStyles />
   </Layout>
 );
 

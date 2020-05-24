@@ -1,15 +1,13 @@
 import * as React from 'react';
+import { Link } from 'gatsby';
 import { useNavigation } from './useNavigation';
 import type { PageNavigationItem } from '../../interfaces/navigation';
 
 type NavItemProps = {
   page: PageNavigationItem;
-  key: number;
 };
 
-const NavItem: React.SFC<NavItemProps> = ({ page, key }) => (
-  <li key={key}>{page.name}</li>
-);
+const NavItem: React.SFC<NavItemProps> = ({ page }) => <li>{page.name}</li>;
 
 // just the links for the site (all the pages with the components on)
 const Navigation: React.SFC = () => {
@@ -21,16 +19,20 @@ const Navigation: React.SFC = () => {
           <ul>
             {pages.map((page, index) => {
               return page.subPages ? (
-                <>
-                  {NavItem({ page, key: index })}
+                <div key={index}>
+                  {NavItem({ page })}
                   <ul>
-                    {page.subPages.map((subPage, subIndex) =>
-                      NavItem({ page: subPage, key: subIndex })
-                    )}
+                    {page.subPages.map((subPage, subIndex) => (
+                      <Link to={subPage.path} key={subIndex}>
+                        {NavItem({ page: subPage })}
+                      </Link>
+                    ))}
                   </ul>
-                </>
+                </div>
               ) : (
-                NavItem({ page, key: index })
+                <Link to={page.path} key={index}>
+                  {NavItem({ page })}
+                </Link>
               );
             })}
           </ul>
