@@ -7,12 +7,16 @@ interface ThemeColors {
   info: string;
   warning: string;
   error: string;
-}
-
-interface Theme {
   backgroundColor: string;
   textColor: string;
+  textHoverColor: string;
   borderColor: string;
+  hoverColor: string;
+}
+
+type ColorThemes = { [key: string]: ThemeColors };
+
+interface Theme {
   grid: GridConfig;
   colors: ThemeColors;
   textScale: TextScale;
@@ -44,4 +48,12 @@ interface GridConfig {
 
 type CustomThemeProps = ThemeProps<Theme>;
 
-export { GridConfig, Theme, ThemeColors, TextScale, Themes, CustomThemeProps };
+export {
+  GridConfig,
+  Theme,
+  ThemeColors,
+  TextScale,
+  Themes,
+  CustomThemeProps,
+  ColorThemes,
+};

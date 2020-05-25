@@ -16,6 +16,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: ${(props: CustomThemeProps) => props.theme.primaryFont};
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    color: ${(props: CustomThemeProps) => props.theme.colors.textColor};
   }
 
   /* Height 100% fixes for gatsby */
@@ -29,7 +30,11 @@ const GlobalStyle = createGlobalStyle`
 
   a {
     text-decoration: none;
-    color: ${(props: CustomThemeProps) => props.theme.textColor};
+    color: ${(props: CustomThemeProps) => props.theme.colors.textColor};
+
+    &:hover {
+      color: ${(props: CustomThemeProps) => props.theme.colors.textHoverColor};
+    }
   }
 `;
 

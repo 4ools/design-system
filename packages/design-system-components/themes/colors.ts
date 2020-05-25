@@ -1,4 +1,6 @@
-const colors = {
+import { ColorThemes } from './interfaces';
+
+const colors: ColorThemes = {
   light: {
     primary: '#DEF62E',
     secondary: '#2BC9E9',
@@ -6,9 +8,11 @@ const colors = {
     warning: '#D76124',
     error: '#CC3A2F',
     info: '#152877',
-    blue: '#2BC9E9',
-    orange: '#D76124',
-    red: '#CC3A2F',
+    backgroundColor: '#ffffff',
+    textColor: '#121212',
+    textHoverColor: '#131313',
+    borderColor: '#cccccc',
+    hoverColor: '#dddddd',
   },
   dark: {
     primary: '#152877',
@@ -17,9 +21,11 @@ const colors = {
     warning: '#D76124',
     error: '#CC3A2F',
     info: '#152877',
-    blue: '#2BC9E9',
-    orange: '#D76124',
-    red: '#CC3A2F',
+    backgroundColor: '#121212',
+    textColor: '#eeeeee',
+    textHoverColor: '#ffffff',
+    borderColor: '#333333',
+    hoverColor: '#444444',
   },
 };
 

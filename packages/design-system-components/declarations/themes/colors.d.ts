@@ -1,25 +1,3 @@
-declare const colors: {
-    light: {
-        primary: string;
-        secondary: string;
-        tertiary: string;
-        warning: string;
-        error: string;
-        info: string;
-        blue: string;
-        orange: string;
-        red: string;
-    };
-    dark: {
-        primary: string;
-        secondary: string;
-        tertiary: string;
-        warning: string;
-        error: string;
-        info: string;
-        blue: string;
-        orange: string;
-        red: string;
-    };
-};
+import { ColorThemes } from './interfaces';
+declare const colors: ColorThemes;
 export default colors;

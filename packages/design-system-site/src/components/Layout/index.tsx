@@ -12,15 +12,16 @@ import {
 
 const SiteWrapper = styled.div`
   height: 100%;
-  background-color: ${(props: CustomThemeProps) => props.theme.backgroundColor};
-  color: ${(props: CustomThemeProps) => props.theme.textColor};
+  background-color: ${(props: CustomThemeProps) =>
+    props.theme.colors.backgroundColor};
+  /* color: ${(props: CustomThemeProps) => props.theme.colors.textColor}; */
 `;
 
 const Aside = styled.aside`
   border-right: 1px solid
-    ${(props: CustomThemeProps) => props.theme.borderColor};
+    ${(props: CustomThemeProps) => props.theme.colors.borderColor};
   width: 100%;
-  padding: 0 20px 0 0;
+  padding: 0;
   height: 100%;
 `;
 
