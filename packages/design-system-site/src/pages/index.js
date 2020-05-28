@@ -1,5 +1,4 @@
 import * as React from 'react';
-import SEO from '../components/seo';
 import { Typography } from '@4ools/design-system-components';
 
 const IndexPage = () => (
