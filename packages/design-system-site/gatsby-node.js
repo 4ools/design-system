@@ -1,22 +1,17 @@
-const { createFilePath } = require('gatsby-source-filesystem');
+// const { createFilePath } = require('gatsby-source-filesystem')
 const path = require('path');
 
 // exports.onCreateNode = ({ node, actions, getNode }) => {
 //   const { createNodeField } = actions;
-//   // you only want to operate on `Mdx` nodes. If you had content from a
-//   // remote CMS you could also check to see if the parent node was a
-//   // `File` node here
 //   if (node.internal.type === 'Mdx') {
-//     const value = createFilePath({ node, getNode });
+//     console.log('----------');
+//     console.log(node);
+//     console.log('----------');
+//     // const value = createFilePath({ node, getNode });
 //     createNodeField({
-//       // Name of the field you are adding
-//       name: 'slug',
-//       // Individual MDX node
+//       name: 'body',
 //       node,
-//       // Generated value based on filepath with "blog" prefix. you
-//       // don't need a separating "/" before the value because
-//       // createFilePath returns a path with the leading "/".
-//       value: `${value}`,
+//       value: `${node.internal.rawBody}`,
 //     });
 //   }
 // };
@@ -24,6 +19,7 @@ const path = require('path');
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
 
+  // we will use this later to strip off the root of the repo if there is one defined
   // allSitePlugin(filter: { name: { eq: "gatsby-source-git" } }) {
   //   edges {
   //     node {
@@ -38,10 +34,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // and the page content
   const result = await graphql(`
     query {
-      allFile(filter: { relativePath: { glob: "**/story.mdx" } }) {
+      allMdx(filter: { fileAbsolutePath: { regex: "/story.mdx/g" } }) {
         edges {
           node {
-            relativePath
+            body
           }
         }
       }
@@ -52,23 +48,16 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     reporter.panicOnBuild('🚨  ERROR: Loading "createPages" query');
   }
   // Create all the story pages
-  const stories = result.data.allFile.edges;
-
-  // console.log(stories);
-
-  // we need to know if there is a root as we strip the root from the path of the node
+  const stories = result.data.allMdx.edges;
 
   // you'll call `createPage` for each result
   stories.forEach(({ node }, index) => {
     createPage({
-      // This is the slug you created before
-      // (or `node.frontmatter.slug`)
+      // @TODO make these links dynamic
       path: 'test',
       // This component will wrap our MDX content
       component: path.resolve('./src/components/Story/index.tsx'),
-      // You can use the values in this context in
-      // our page layout component
-      context: { id: node.id },
+      context: { content: node.body },
     });
   });
 };
