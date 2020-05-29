@@ -1,12 +1,12 @@
 import { useStaticQuery, graphql } from 'gatsby';
 import type {
-  AllSitePagesQueryResult,
+  NavigationQueryResult,
   PageNavigation,
   PageNavigationItem,
 } from '../../interfaces/navigation';
 
-const formatNavigationData = (
-  queryResult: AllSitePagesQueryResult
+const formatPageNavigationData = (
+  queryResult: NavigationQueryResult
 ): PageNavigation => {
   const nav: PageNavigation = [];
 
@@ -67,9 +67,20 @@ const formatNavigationData = (
   return nav;
 };
 
+const formatStoryNavigation = (
+  allStoryFiles: NavigationQueryResult,
+  rootPath: string
+): PageNavigation => {
+  const nav: PageNavigation = [];
+
+  allStoryFiles.allFile.edges.map(node => {});
+
+  return nav;
+};
+
 const useNavigation = (): PageNavigation => {
-  const data: AllSitePagesQueryResult = useStaticQuery(graphql`
-    query allPages {
+  const navigationData: NavigationQueryResult = useStaticQuery(graphql`
+    query Pages {
       allSitePage {
         edges {
           node {
@@ -80,7 +91,10 @@ const useNavigation = (): PageNavigation => {
     }
   `);
 
-  return formatNavigationData(data);
+  // get the root path out
+  // const root = navigationData.allSitePlugin.edges[0]?.node.pluginOptions.root;
+
+  return formatPageNavigationData(navigationData);
 };
 
-export { useNavigation, formatNavigationData };
+export { useNavigation, formatPageNavigationData, formatStoryNavigation };

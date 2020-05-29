@@ -1,11 +1,33 @@
 interface AllSitePagesQueryResult {
-  allSitePage: {
-    edges: Array<{
-      node: {
-        path: string;
+  edges: Array<{
+    node: {
+      path: string;
+    };
+  }>;
+}
+
+interface AllStoryPagesQueryResult {
+  edges: Array<{
+    node: {
+      relativePath: string;
+    };
+  }>;
+}
+
+interface GitRootPathQueryResult {
+  edges: Array<{
+    node: {
+      pluginOptions: {
+        root: string;
       };
-    }>;
-  };
+    };
+  }>;
+}
+
+interface NavigationQueryResult {
+  allSitePlugin: GitRootPathQueryResult;
+  allFile: AllStoryPagesQueryResult;
+  allSitePage: AllSitePagesQueryResult;
 }
 
 // ony two deep for now we do not need to worry then
@@ -16,4 +38,4 @@ interface PageNavigationItem {
 }
 type PageNavigation = Array<PageNavigationItem>;
 
-export { PageNavigation, PageNavigationItem, AllSitePagesQueryResult };
+export { PageNavigation, PageNavigationItem, NavigationQueryResult };
