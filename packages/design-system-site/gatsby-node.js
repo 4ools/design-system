@@ -1,5 +1,5 @@
 const { createFilePath } = require('gatsby-source-filesystem');
-const path = require('path');
+const nodePath = require('path');
 const mdxFileName = 'story';
 
 const isStoryMDX = new RegExp(`${mdxFileName}.mdx`, 'g');
@@ -8,7 +8,6 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
   // if it is the right type of file, not just an mdx one
   if (isStoryMDX.test(node.fileAbsolutePath)) {
-    // if (node.internal.type === 'Mdx') {
     const value = createFilePath({ node, getNode });
     // set the slug we will later modify
     createNodeField({
@@ -63,14 +62,21 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   if (result.errors) {
     reporter.panicOnBuild('🚨  ERROR: Loading "createPages" query');
   }
-  // Create all the story pages
-  const stories = result.data.allMdx.edges;
 
-  // you'll call `createPage` for each result
-  stories.forEach(({ node }) => {
+  // for all the story files we find
+  result.data.allMdx.edges.forEach(({ node }) => {
+    const correctPath = node.fields.slug
+      .replace(root, '')
+      .replace(`${mdxFileName}/`, '');
+
+    const path = correctPath
+      .split('/')
+      .map(part => part.replace(/^\w/, chr => chr.toUpperCase()))
+      .join('/');
+
     createPage({
-      path: node.fields.slug.replace(root, '').replace(`${mdxFileName}/`, ''),
-      component: path.resolve('./src/components/Story/index.tsx'),
+      path,
+      component: nodePath.resolve('./src/components/Story/index.tsx'),
       context: { content: node.body },
     });
   });
